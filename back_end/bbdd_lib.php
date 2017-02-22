@@ -7,9 +7,9 @@
 
 require "error_lib.php";
 
-function connect($db) // Todo un clásico, esta vez en inglés para elevar la caché del programador
+function connect($database) // Todo un clásico, esta vez en inglés para elevar la caché del programador
 {
-    $conexion = mysqli_connect("localhost", "root", "", $db) or
+    $conexion = mysqli_connect("localhost", "root", "", $database) or
         die("No se ha podido conectar a la BBDD");
     return $conexion;
 }

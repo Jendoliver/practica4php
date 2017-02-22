@@ -58,7 +58,7 @@
                         <label for="skill">Entrenador del Pokémon:</label>
                         <select>
                             <?php
-                            require "select_lib.php";
+                            require "../back_end/select_lib.php";
                             selectTrainersNoFull();
 			    		    ?>
                         </select>
