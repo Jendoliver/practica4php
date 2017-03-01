@@ -12,7 +12,7 @@
     <?php 
     if(!empty($_POST))
     {
-        require "insert_lib.php";
+        require "../back_end/insert_lib.php";
         extract($_POST);
         insertPokemon($name, $type, $skill, $atk, $def, $spd, $hp, $trainer);
     }
@@ -32,7 +32,26 @@
                     </div>
                     <div class="form-group">
                         <label for="pokemon">Tipo del Pokémon:</label>
-                        <input type="text" class="form-control" name="type" placeholder="Introduce el tipo del Pokémon" maxlength="45" required>
+                        <select class="form-control" name="type">
+                            <option value="Bicho">Bicho</option>
+                            <option value="Siniestro">Siniestro</option>
+                            <option value="Dragón">Dragón</option>
+                            <option value="Eléctrico">Eléctrico</option>
+                            <option value="Hada">Hada</option>
+                            <option value="Lucha">Lucha</option>
+                            <option value="Fuego">Fuego</option>
+                            <option value="Volador">Volador</option>
+                            <option value="Fantasma">Fantasma</option>
+                            <option value="Planta">Planta</option>
+                            <option value="Tierra">Tierra</option>
+                            <option value="Hielo">Hielo</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Veneno">Veneno</option>
+                            <option value="Psíquico">Psíquico</option>
+                            <option value="Roca">Roca</option>
+                            <option value="Acero">Acero</option>
+                            <option value="Agua">Agua</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="skill">Habilidad del Pokémon:</label>
@@ -56,10 +75,10 @@
                     </div>
                     <div class="form-group">
                         <label for="skill">Entrenador del Pokémon:</label>
-                        <select>
+                        <select class="form-control" name="trainer">
                             <?php
                             require "../back_end/select_lib.php";
-                            selectTrainersNoFull();
+                            selectTrainersWithPoke(0, 5);
 			    		    ?>
                         </select>
                     </div>

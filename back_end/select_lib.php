@@ -43,13 +43,13 @@ function pokemonExists($name)
     }
 }
 
-function selectTrainersNoFull()
+function selectTrainersWithPoke($x, $y) // between x and y
 {
     $con = connect("stukemon");
     $select = "SELECT trainer.name
                 FROM trainer LEFT JOIN pokemon ON trainer.name = pokemon.trainer
                 GROUP BY trainer.name
-                HAVING COUNT(pokemon.trainer) < 6;";
+                HAVING COUNT(pokemon.trainer) BETWEEN $x and $y;";
     if($res = mysqli_query($con, $select))
     {
         $options = "";
@@ -58,7 +58,39 @@ function selectTrainersNoFull()
             do
             {
                 extract($row);
-                $options .= "<option name='$name'>$name</option>";
+                $options .= "<option value='$name'>$name</option>";
+            } while($row = mysqli_fetch_assoc($res));
+            echo $options;
+        }
+        else
+        {
+            errorNoTrainers();
+        }
+    }
+    else
+    {
+        errorQuery($con);
+    }
+    disconnect($con);
+}
+
+function selectSecondTrainer($trainer1)
+{
+    $con = connect("stukemon");
+    $select = "SELECT trainer.name
+                FROM trainer LEFT JOIN pokemon ON trainer.name = pokemon.trainer
+                WHERE trainer.name != '$trainer1'
+                GROUP BY trainer.name
+                HAVING COUNT(pokemon.trainer) BETWEEN 1 and 6;";
+    if($res = mysqli_query($con, $select))
+    {
+        $options = "";
+        if($row = mysqli_fetch_assoc($res))
+        {
+            do
+            {
+                extract($row);
+                $options .= "<option value='$name'>$name</option>";
             } while($row = mysqli_fetch_assoc($res));
             echo $options;
         }

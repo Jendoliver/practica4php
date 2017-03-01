@@ -17,7 +17,7 @@
                 <div class="list-group" style="text-align: center;">
                     <a href="altaentrenador.php" class="list-group-item">Dar de alta entrenador</a>
                     <a href="altapokemon.php" class="list-group-item">Dar de alta un Pokémon</a>
-                    <a href="batalla.php" class="list-group-item">¡BATALLA!</a>
+                    <a href="preparacionbatalla.php" class="list-group-item">¡BATALLA!</a>
                     <a href="darpocion.php" class="list-group-item">Dar poción a un Pokémon</a>
                     <a href="getpociones.php" class="list-group-item">Conseguir pociones</a>
                     <a href="listarpokemon.php" class="list-group-item">Listado de los Pokémon</a>
