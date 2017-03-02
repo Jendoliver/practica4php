@@ -42,11 +42,12 @@ function errorNotEnoughPoints($diff)
 
 function pokeDebilitado($name)
 {
-    $message = "¡$name se ha debilitado y no puede luchar más!";
-    echo "<script type='text/javascript'>
-    alert('$message');
-    window.location = '../front_end/index.php';
-    </script>";
+    echo "<div class='row'>";
+    echo "<div class='col-md-3'></div>";
+    echo "<div class='col-md-6'>
+            <h3>¡$name se ha debilitado y no puede luchar más! Dale pociones para reanimarlo...</h3>
+         </div>";
+    echo "<div class='col-md-3'></div>";
 }
 
 function errorNoTrainers()
