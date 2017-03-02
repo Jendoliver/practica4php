@@ -8,7 +8,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Stukemon GO!</title>
 </head>
-<body> <!-- TENGO NOMBRES POKE -->
+<body>
     <?php require "../back_end/update_lib.php"; ?>
     <div class="container-fluid">
         <?php include "header.php"; ?>
