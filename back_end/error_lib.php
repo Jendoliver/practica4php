@@ -4,7 +4,6 @@
 *   error_lib.php: Gestión de errores de la aplicación
 *
 */
-require "constants.php";
 
 /****** ERRORES GRAVES ******/
 function errorQuery($con)
