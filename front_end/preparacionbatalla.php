@@ -20,13 +20,18 @@
     if(isset($_POST["trainer1"]) || isset($_POST["trainer2"]))
     {
         if(isset($_POST["trainer2"]))
-        {   ?> <!-- HAY QUE HACER ESTO CABRONAZO -->
+        {   ?>
             <form action="batalla.php" method="POST">
                 <div class="form-group">
-                    <label for="trainer2">Nombre del segundo entrenador:</label>
-                    <input type="hidden" name="trainer1" value="<?php echo $_POST["trainer1"] ?>">
-                    <select class="form-control" name="trainer2">
-                        <?php selectSecondTrainer($_POST["trainer1"]); ?>
+                    <label for="poke1">Pokémon del primer entrenador:</label>
+                    <select class="form-control" name="poke1">
+                        <?php selectPokesFromTrainer($_POST["trainer1"]); ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="poke2">Pokémon del segundo entrenador:</label>
+                    <select class="form-control" name="poke2">
+                        <?php selectPokesFromTrainer($_POST["trainer2"]); ?>
                     </select>
                 </div>
                 <div class="form-group">

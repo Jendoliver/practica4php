@@ -46,3 +46,17 @@ function insertPokemon($name, $type, $skill, $atk, $def, $spd, $hp, $trainer)
         errorPokemonExists();
     disconnect($con);
 }
+
+function insertBattle($poke1, $poke2, $winner)
+{
+    $con = connect("stukemon");
+    if(mysqli_query($con, "INSERT INTO battle(`pokemon1`,`pokemon2`,`winner`) VALUES('$poke1', '$poke2', '$winner');"))
+    {
+        disconnect($con);
+        return 1;
+    }
+    else
+        errorQuery($con);
+    disconnect($con);
+    return 0;
+}

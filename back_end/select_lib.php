@@ -105,3 +105,65 @@ function selectSecondTrainer($trainer1)
     }
     disconnect($con);
 }
+
+function selectPokesFromTrainer($trainer)
+{
+    $con = connect("stukemon");
+    if($res = mysqli_query($con, "SELECT name FROM pokemon WHERE trainer = '$trainer';"))
+    {
+        $options = "";
+        while($row = mysqli_fetch_assoc($res))
+        {
+            extract($row);
+            $options .= "<option value='$name'>$name</option>";
+        }
+        echo $options;
+    }
+    else 
+    {
+        errorQuery();
+    }
+    disconnect($con);
+}
+
+function selectPokesFromTrainerWithHP($trainer)
+{
+    $con = connect("stukemon");
+    if($res = mysqli_query($con, "SELECT name, life FROM pokemon WHERE trainer = '$trainer';"))
+    {
+        $options = "";
+        while($row = mysqli_fetch_assoc($res))
+        {
+            extract($row);
+            $options .= "<option value='$name'>$name (HP: $life)</option>";
+        }
+        echo $options;
+    }
+    else 
+    {
+        errorQuery();
+    }
+    disconnect($con);
+}
+
+function selectPokeStats($name)
+{
+    $con = connect("stukemon");
+    if($res = mysqli_query($con, "SELECT * FROM pokemon WHERE name = '$name'"))
+    {
+        disconnect($con);
+        return mysqli_fetch_assoc($res);
+    }
+    else
+        errorQuery();
+    disconnect($con);
+}
+
+function selectRanking()
+{
+    $con = connect("stukemon");
+    $query = "SELECT winner, count(*) as cont
+                FROM battle
+                GROUP BY winner
+                ORDER BY cont DESC;";
+}
