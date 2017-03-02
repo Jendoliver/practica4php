@@ -124,7 +124,7 @@ function selectSecondTrainer($trainer1)
 function selectPokesFromTrainer($trainer)
 {
     $con = connect("stukemon");
-    if($res = mysqli_query($con, "SELECT name FROM pokemon WHERE trainer = '$trainer';"))
+    if($res = mysqli_query($con, "SELECT name FROM pokemon WHERE trainer = '$trainer' AND life > 0;"))
     {
         $options = "";
         while($row = mysqli_fetch_assoc($res))

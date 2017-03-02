@@ -40,6 +40,15 @@ function errorNotEnoughPoints($diff)
     </script>";
 }
 
+function pokeDebilitado($name)
+{
+    $message = "¡$name se ha debilitado y no puede luchar más!";
+    echo "<script type='text/javascript'>
+    alert('$message');
+    window.location = '../front_end/index.php';
+    </script>";
+}
+
 function errorNoTrainers()
 {
     echo "<h1>No hay entrenadores disponibles a los que asignarles Pokémon, crea alguno primero</h1>";

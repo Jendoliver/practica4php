@@ -51,6 +51,8 @@
                 }
                 updateHP($poke1["name"], $poke1["life"]);
                 updateHP($poke2["name"], $poke2["life"]);
+                if($poke1["life"] < 1) pokeDebilitado($poke1["name"]);
+                if($poke2["life"] < 1) pokeDebilitado($poke2["name"]);
                 ?>
             </div>
             <div class="col-md-3"></div>
