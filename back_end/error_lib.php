@@ -31,6 +31,15 @@ function errorPokemonExists()
     </script>";
 }
 
+function errorNotEnoughPoints($diff)
+{
+    $message = "El entrenador no dispone de puntos suficientes para comprar tantas pociones. Le faltan $diff puntos";
+    echo "<script type='text/javascript'>
+    alert('$message');
+    window.location = '../front_end/getpociones.php';
+    </script>";
+}
+
 function errorNoTrainers()
 {
     echo "<h1>No hay entrenadores disponibles a los que asignarles Pokémon, crea alguno primero</h1>";

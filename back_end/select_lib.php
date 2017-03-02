@@ -43,6 +43,21 @@ function pokemonExists($name)
     }
 }
 
+function selectTrainerPoints($name)
+{
+    $con = connect("stukemon");
+    if($res = mysqli_query($con, "SELECT points FROM trainer WHERE name = '$name';"))
+    {
+        disconnect($con);
+        $row = mysqli_fetch_assoc($res);
+        return $row["points"];
+    }
+    else
+        errorQuery($con);
+    disconnect($con);
+    return 0;
+}
+
 function selectTrainersWithPoke($x, $y) // between x and y
 {
     $con = connect("stukemon");
@@ -159,11 +174,36 @@ function selectPokeStats($name)
     disconnect($con);
 }
 
-function selectRanking()
+function rankingPokemon()
 {
     $con = connect("stukemon");
-    $query = "SELECT winner, count(*) as cont
+    if($res = mysqli_query($con, "SELECT * FROM pokemon ORDER BY level DESC, life DESC;"))
+        createTable($res);
+    else
+        errorQuery($con);
+    disconnect($con);
+}
+
+function rankingTrainer()
+{
+    $con = connect("stukemon");
+    if($res = mysqli_query($con, "SELECT * FROM trainer ORDER BY points DESC;"))
+        createTable($res);
+    else
+        errorQuery($con);
+    disconnect($con);
+}
+
+function rankingBattle()
+{
+    $con = connect("stukemon");
+    $query = "SELECT winner, count(*) as Victorias
                 FROM battle
                 GROUP BY winner
-                ORDER BY cont DESC;";
+                ORDER BY Victorias DESC;";
+    if($res = mysqli_query($con, $query))
+        createTable($res);
+    else
+        errorQuery($con);
+    disconnect($con);
 }
